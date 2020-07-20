@@ -25,23 +25,40 @@ footer{
     margin-left: 20rem;
     margin-right: 20rem;
 }
-.autoclicker{
-    text-align: center;
-    border: 1px solid black;
+#acheterAutoClickBt{
+    display: flex;
+    justify-content: center;
     padding: 1.5rem;
-    margin-left: 40rem;
-    margin-right: 40rem;
+    margin-left: auto;
+    margin-right: auto;
 }
-.amelioration{
+
+#reset{
+    display: flex;
+    justify-content: center;
+    padding: 0.5rem;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#ameliorationClickBt{
+    display: flex;
+    justify-content: center;
+    padding: 1.5rem;
+    margin-left: auto;
+    margin-right: auto;    
+}
+
+#amelioration{
     display: flex;
     border: 1px solid black;
 }
-.boutonAmelioration{
-    margin-left: 85rem;
-    border: 1px solid black;
-}
+
 img{
     display: flex;
     margin-left: auto;
     margin-right: auto;
+}
+p{
+    text-align: center;
 }

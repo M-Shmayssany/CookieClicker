@@ -11,6 +11,15 @@ header p {
   text-align: center;
 }
 
+footer {
+  background-color: black;
+  color: white;
+}
+
+#target {
+  text-align: center;
+}
+
 .count {
   color: red;
   text-align: center;

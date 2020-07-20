@@ -5,6 +5,12 @@
           box-sizing: border-box;
 }
 
+body {
+  background-image: url("/assets/img/science-fiction-441708_1920.jpg");
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+}
+
 header p {
   background-color: cornflowerblue;
   color: darkblue;
@@ -27,6 +33,17 @@ footer {
   border: 1px solid black;
   margin-left: 20rem;
   margin-right: 20rem;
+}
+
+#nbrClick {
+  text-align: center;
+  color: white;
+  background-color: black;
+  padding: 0.5rem;
+  margin-left: 40rem;
+  margin-right: 40rem;
+  margin-top: 2rem;
+  margin-bottom: 2rem;
 }
 
 #acheterAutoClickBt {
@@ -53,6 +70,10 @@ footer {
   margin-right: auto;
 }
 
+#reset:hover {
+  background-color: red;
+}
+
 #ameliorationClickBt {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -63,13 +84,30 @@ footer {
   padding: 1.5rem;
   margin-left: auto;
   margin-right: auto;
+  background-color: black;
+  color: white;
 }
 
-#amelioration {
+#ameliorationClickBt:hover {
+  background-color: blue;
+}
+
+#acheterAutoClickBt {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  border: 1px solid black;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  padding: 1.5rem;
+  margin-left: auto;
+  margin-right: auto;
+  background-color: black;
+  color: white;
+}
+
+#acheterAutoClickBt:hover {
+  background-color: blue;
 }
 
 img {
@@ -80,6 +118,24 @@ img {
   margin-right: auto;
 }
 
-p {
+#label {
   text-align: center;
+  color: white;
+  background-color: black;
+  padding: 0.5rem;
+  margin-left: 40rem;
+  margin-right: 40rem;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+}
+
+#cookieParSeconde {
+  text-align: center;
+  color: white;
+  background-color: black;
+  padding: 0.5rem;
+  margin-left: 40rem;
+  margin-right: 40rem;
+  margin-top: 2rem;
+  margin-bottom: 2rem;
 }

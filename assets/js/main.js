@@ -10,6 +10,7 @@
     var reset = document.getElementById("reset");
     var cookieParSeconde = document.getElementById("cookieParSeconde");
     var ameliorationClickBt = document.getElementById("ameliorationClickBt");
+    var afficherClick = document.getElementById("nbrClick");
 
     if(!localStorage.getItem('score'))
         localStorage.setItem('score', 0);
@@ -22,14 +23,15 @@
     var autoClick = parseInt(localStorage.getItem('autoClick'));
     var click = parseInt(localStorage.getItem('click'));
 
-    var autoClickPrix = (autoClick + 1) * 5;
-    var clickPrix = (click + 1)*2;
+    var autoClickPrix = 50 * Math.pow(1.1, autoClick);
+    var clickPrix = 10 * Math.pow(1.06, click - 1);
 
     function resetTheGame(){
         cookieCount = 0;
         autoClick = 0;
-        autoClickPrix = 5;
+        autoClickPrix = 50;
         click = 1;
+        clickPrix = 10;
         update();
     }
 
@@ -38,10 +40,11 @@
         localStorage.setItem('score', cookieCount);
         localStorage.setItem('autoClick', autoClick);
         localStorage.setItem('click', click);
-        target.innerHTML = localStorage.getItem('score');
-        ameliorationClickBt.innerHTML = 'click: ' + clickPrix;
-        acheterAutoClickBt.innerHTML = 'autoclicker: ' + autoClickPrix;
+        target.innerHTML = Number (localStorage.getItem('score')).toFixed(2);
+        ameliorationClickBt.innerHTML = 'click: ' + clickPrix.toFixed(2); 
+        acheterAutoClickBt.innerHTML = 'autoclicker: ' + autoClickPrix.toFixed(2);
         cookieParSeconde.innerHTML = "Cookie par seconde: " + autoClick + "/s";
+        afficherClick.innerHTML = "Force de click: " + click + "/par tape";
     }
 
 //fonction timer
@@ -62,7 +65,7 @@
         if(cookieCount >= clickPrix){
             cookieCount -= clickPrix;
             click++;
-            clickPrix += 2
+            clickPrix *= 1.06;
             update();
         }
     }
@@ -72,7 +75,7 @@
         if(cookieCount >= autoClickPrix){
             cookieCount -= autoClickPrix;
             autoClick++;
-            autoClickPrix += 5;
+            autoClickPrix *= 1.1;
             update();
         }
     }

@@ -13,11 +13,32 @@ header{
 footer{
 
 }
-div{
+
+.count{
     color: red;
     text-align: center;
     margin-top: 2rem;
     border: 1px solid black;
-    margin-left: 5rem;
-    margin-right: 5rem;
+    margin-left: 20rem;
+    margin-right: 20rem;
+}
+.autoclicker{
+    text-align: center;
+    border: 1px solid black;
+    padding: 1.5rem;
+    margin-left: 40rem;
+    margin-right: 40rem;
+}
+.amelioration{
+    display: flex;
+    border: 1px solid black;
+}
+.boutonAmelioration{
+    margin-left: 85rem;
+    border: 1px solid black;
+}
+img{
+    display: flex;
+    margin-left: auto;
+    margin-right: auto;
 }

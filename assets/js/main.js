@@ -3,30 +3,35 @@
 let click = 1;
 let count = localStorage.setItem('count',0);
 let cookie = document.getElementById('cookie');
-let upgrade = document.getElementById('amelioration');
+let upgrade = document.getElementById('upgrade');
 let boost = document.getElementById('boost');
-let btnUpgrade = document.getElementById('boutonAmelioration');
+let amelio = document.getElementById('amelioration');
 let autoClicker = document.getElementById('autoclicker');
 let target = document.getElementById('target');
 let upgradeCount = 0 ;
 let multiplier = 1;
+let amelioCost = 100;
+let upgradeCost = 5;
 let multiplierCost = 50;
 let autoclickCost = 25;
 
 // action button
-btnUpgrade.addEventListener('click', ()=>{
-    if(Number(count) > 5){
-    count -= 5;
+upgrade.addEventListener('click', ()=>{
+    if(Number(count) > upgradeCost){
+    count -= upgradeCost;
     localStorage.setItem('count',count);
     upgradeCount++;
     click = upgradeCount;
+    upgradeCost = upgradeCost * 2
+    update();
+    document.getElementById('upgrated').innerHTML = upgradeCost;
     return click;
     
     }else{
         alert("Vous n'avez pas assez de points .");
         
     }
-})
+    })
 
 
 cookie.addEventListener('click',()=>{
@@ -34,16 +39,19 @@ cookie.addEventListener('click',()=>{
     count = Number(click) + Number(count);
     localStorage.setItem('count', count);
     DisplayCount();
+    update();
 })
 
 autoClicker.addEventListener('click',()=>{
-    if(Number(count) > 25){
+    if(Number(count) >= autoclickCost){
         count -= autoclickCost;
-        DisplayCount();
+        autoclickCost = autoclickCost *2 ;
+        document.getElementById('autocliked').innerHTML =  autoclickCost;
+        update();
         for(let i = 0 ; i < 50 ; i++){
-        count++ ;
+            count++
+            update();
         
-        DisplayCount();
         
     }
     localStorage.setItem('count' , count);
@@ -52,22 +60,25 @@ autoClicker.addEventListener('click',()=>{
         alert("Vous n'avez pas assez de points .");
     }
 })
-upgrade.addEventListener('click', ()=>{
-    if(count > 100){
-        count -= 100 ;
-        localStorage.setItem('count' , count);
-        DisplayCount();
-        for(let i = 0; i<100;i++){
-            count += 3;
-            localStorage.setItem('count' , count);
-            DisplayCount();
+amelio.addEventListener('click', ()=>{
+    if(count >= amelioCost){
+        count -= amelioCost ;
+        update();
+        amelioCost = amelioCost * 2;
+        document.getElementById('ameliored').innerHTML = amelioCost;
+        for(let i = 0; i<amelioCost;i++){
+            count++;
+            count++;
+            
+            update();
         }
     }else{
         alert("Vous n'avez pas assez de points .");
     }
-        DisplayCount();
+        localStorage.setItem('count' , count);
+        update();
 })
-console.log(click);
+
 
 
 // function 
@@ -75,3 +86,11 @@ console.log(click);
 function DisplayCount(){
     target.innerHTML = localStorage.getItem('count');
 }
+
+function update(){
+    
+    localStorage.setItem('count', count);
+    target.innerHTML = Number(localStorage.getItem('count'));
+    
+}
+

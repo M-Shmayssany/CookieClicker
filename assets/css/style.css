@@ -11,32 +11,66 @@ header p {
   text-align: center;
 }
 
-.count {
+p {
+  text-align: center;
+}
+
+.buttons {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  position: relative;
+}
+
+.buttons button {
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+#target {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  text-align: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  font-size: 22px;
+  margin-top: 2rem;
+}
+
+#count {
   color: red;
   text-align: center;
   margin-top: 2rem;
   border: 1px solid black;
-  margin-left: 20rem;
-  margin-right: 20rem;
 }
 
-.autoclicker {
+#autoclicker {
   text-align: center;
   border: 1px solid black;
   padding: 1.5rem;
-  margin-left: 40rem;
-  margin-right: 40rem;
 }
 
-.amelioration {
+#amelioration {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
   border: 1px solid black;
 }
 
-.boutonAmelioration {
-  margin-left: 85rem;
+#boutonAmelioration {
   border: 1px solid black;
 }
 
@@ -46,4 +80,6 @@ img {
   display: flex;
   margin-left: auto;
   margin-right: auto;
+  border: 1px solid black;
 }
+/*# sourceMappingURL=style.css.map */

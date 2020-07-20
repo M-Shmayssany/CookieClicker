@@ -1,6 +1,21 @@
 * {
   margin: 0;
   padding: 0;
-  box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
 }
-/*# sourceMappingURL=style.css.map */
+
+header p {
+  background-color: cornflowerblue;
+  color: darkblue;
+  text-align: center;
+}
+
+div {
+  color: red;
+  text-align: center;
+  margin-top: 2rem;
+  border: 1px solid black;
+  margin-left: 5rem;
+  margin-right: 5rem;
+}

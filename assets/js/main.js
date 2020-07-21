@@ -9,8 +9,10 @@ let amelio = document.getElementById('amelioration');
 let autoClicker = document.getElementById('autoclicker');
 let target = document.getElementById('target');
 let upgradeCount = 0 ;
+let amelioCount = 100;
 let multiplier = 1;
 let amelioCost = 100;
+let clickCost = 1;
 let upgradeCost = 5;
 let multiplierCost = 50;
 let autoclickCost = 25;
@@ -26,7 +28,6 @@ upgrade.addEventListener('click', ()=>{
     update();
     document.getElementById('upgrated').innerHTML = upgradeCost;
     return click;
-    
     }else{
         alert("Vous n'avez pas assez de points .");
         
@@ -50,10 +51,8 @@ autoClicker.addEventListener('click',()=>{
         update();
         for(let i = 0 ; i < 50 ; i++){
             count++
-            update();
-        
-        
-    }
+            update();    
+            }
     localStorage.setItem('count' , count);
     }else{
         
@@ -65,8 +64,9 @@ amelio.addEventListener('click', ()=>{
         count -= amelioCost ;
         update();
         amelioCost = amelioCost * 2;
+        amelioCount = parseInt(amelioCount * 1.1);
         document.getElementById('ameliored').innerHTML = amelioCost;
-        for(let i = 0; i<amelioCost;i++){
+        for(let i = 0; i<amelioCount;i++){
             count++;
             count++;
             
@@ -79,7 +79,17 @@ amelio.addEventListener('click', ()=>{
         update();
 })
 
-
+boost.addEventListener('click', ()=>{
+    if(count >= clickCost){
+        count -= clickCost;
+        click++;
+        clickCost = parseInt(clickCost * 2);
+        document.getElementById('boosted').innerHTML = clickCost;
+        update();
+    }else{
+        alert("Vous n'avez pas assez de points .");
+    }
+})
 
 // function 
 
@@ -88,9 +98,13 @@ function DisplayCount(){
 }
 
 function update(){
-    
+    localStorage.setItem('amelioCost',amelioCost);
+    localStorage.setItem('multiplierCost',multiplierCost);
+    localStorage.setItem('clickCost',clickCost);
     localStorage.setItem('count', count);
+    localStorage.setItem('upgradeCost',upgradeCost);
     target.innerHTML = Number(localStorage.getItem('count'));
     
 }
+
 

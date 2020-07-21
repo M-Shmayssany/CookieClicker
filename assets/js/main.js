@@ -11,23 +11,23 @@ let target = document.getElementById('target');
 let upgradeCount = 0 ;
 let amelioCount = 100;
 let multiplier = 1;
-let amelioCost = 100;
+
+let amelioCost = 50;
 let clickCost = 1;
 let upgradeCost = 5;
-let multiplierCost = 50;
 let autoclickCost = 25;
 
 // action button
 upgrade.addEventListener('click', ()=>{
     if(Number(count) > upgradeCost){
-    count -= upgradeCost;
-    localStorage.setItem('count',count);
-    upgradeCount++;
-    click = upgradeCount;
-    upgradeCost = upgradeCost * 2
-    update();
-    document.getElementById('upgrated').innerHTML = upgradeCost;
-    return click;
+        count -= upgradeCost;
+        localStorage.setItem('count',count);
+        upgradeCount++;
+        click = upgradeCount;
+        upgradeCost = upgradeCost * 2
+        update();
+        document.getElementById('upgrated').innerHTML = upgradeCost;
+        return click;
     }else{
         alert("Vous n'avez pas assez de points .");
         
@@ -45,15 +45,8 @@ cookie.addEventListener('click',()=>{
 
 autoClicker.addEventListener('click',()=>{
     if(Number(count) >= autoclickCost){
-        count -= autoclickCost;
-        autoclickCost = autoclickCost *2 ;
-        document.getElementById('autocliked').innerHTML =  autoclickCost;
+        autoClick();
         update();
-        for(let i = 0 ; i < 50 ; i++){
-            count++
-            update();    
-            }
-    localStorage.setItem('count' , count);
     }else{
         
         alert("Vous n'avez pas assez de points .");
@@ -66,9 +59,9 @@ amelio.addEventListener('click', ()=>{
         amelioCost = amelioCost * 2;
         amelioCount = parseInt(amelioCount * 1.1);
         document.getElementById('ameliored').innerHTML = amelioCost;
-        for(let i = 0; i<amelioCount;i++){
-            count++;
-            count++;
+        for(let i = 0; i<25;i++){
+            count += amelioCount;
+            
             
             update();
         }
@@ -96,15 +89,30 @@ boost.addEventListener('click', ()=>{
 function DisplayCount(){
     target.innerHTML = localStorage.getItem('count');
 }
+function autoClick(){
+        count -= autoclickCost;
+        let time = 30;
+        autoclickCost = parseInt(Math.floor(autoclickCost *1.2));
+        console.log("AutoClick Launch");       
+        let interval = setInterval(()=>{
+                                        time--;    
+                                        if(time <= 0){clearInterval(interval);}
+                                        else{target.innerHTML = count +=1;
+                                            document.getElementById('autocliked').innerHTML = "cout"+autoclickCost+"<br>" +time+"/30";
+                                            }
+                                            },1000);
+                     
+}
+
 
 function update(){
     localStorage.setItem('amelioCost',amelioCost);
-    localStorage.setItem('multiplierCost',multiplierCost);
     localStorage.setItem('clickCost',clickCost);
     localStorage.setItem('count', count);
     localStorage.setItem('upgradeCost',upgradeCost);
     target.innerHTML = Number(localStorage.getItem('count'));
     
 }
+
 
 

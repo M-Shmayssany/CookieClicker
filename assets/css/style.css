@@ -15,7 +15,9 @@ footer {
   color: white;
 }
 
-#target {
+.target {
+  display: flex;
+  justify-content: center;
   text-align: center;
 }
 
@@ -46,9 +48,13 @@ footer {
   color: black;
 }
 
+#boost, #autoclickerBtn, #prixDeAmelioration {
+  width: 100%;
+}
+
 .amelioration {
-  display: flex;
   border: 1px solid black;
+  justify-content: space-between;
 }
 
 .boutonAmelioration {

@@ -2,23 +2,31 @@
 
     // your code here
     let run = document.getElementById('img');
+    let w3 = document.getElementById('w3');
     let autoClickSpan1 = document.getElementById('span1');
     let autoClickSpan2 = document.getElementById('span2');
     let autoClickSpanA1 = document.getElementById('spanA1');
     let autoClickSpanA2 = document.getElementById('spanA2');
+    let autoClickSpanB1 = document.getElementById('spanB1');
+    let autoClickSpanB2 = document.getElementById('spanB2');
     let autoClickBtn = document.getElementById('autoclickerBtn');
     let prixDeAmeliorationBtn = document.getElementById('prixDeAmelioration');
-    let storage = 0;
+    let boostBtn = document.getElementById('boost');
+    let state = false;
     var target = document.getElementById("target");
-    var autoClick = 0;
-    
+    var value;
     var coociesObj = {'count': 0, 'score': 0};
     var multiplierObj = {'price': 100, 'level': 1};
     var boosterObj = {'price': 150, 'time':15, 'level': 0};
     var autoClickerObj = {'price': 150, 'level': 0, 'delay': 1000};
     var interval;
 
-    function click(){        
+    function click(){ 
+        if(state){
+            value = 1 * multiplierObj.level;
+        }else{
+            value = (1 * multiplierObj.level) * 2;
+        }       
         coociesObj.score += 1 * multiplierObj.level;
         target.innerText = coociesObj.score;
     }
@@ -32,14 +40,39 @@
             prixDeAmeliorationBtn.disabled = false;
         }else{
             prixDeAmeliorationBtn.disabled = true;
-        }
+        }        
+        if(coociesObj.score >= boosterObj.price){
+            boostBtn.disabled = false;
+        }else{
+            boostBtn.disabled = true;
+        }        
 
-        
         autoClickSpan1.innerHTML = `Buy ${autoClickerObj.price}`;
-        autoClickSpan2.innerHTML = `Level ${autoClickerObj.level}`;
+        autoClickSpan2.innerHTML = `Level ${autoClickerObj.level+1}`;
         autoClickSpanA1.innerHTML = `Buy ${multiplierObj.price}`;
         autoClickSpanA2.innerHTML = `Level ${multiplierObj.level}`;
-
+        autoClickSpanB1.innerHTML = `Buy ${boosterObj.price}`;
+        autoClickSpanB2.innerHTML = `Level ${boosterObj.level+1} Time ${boosterObj.time}`;
+    }
+    function countSeconds(time){
+        let i = 0;
+        
+        
+        let timeInt = setInterval(()=>{
+                if ( i <= time) {
+                w3.style.width = `${(100*i)/time}%`;
+                w3.innerText = `${parseInt((100*i)/time)}%`;
+                i++;
+                state = true;
+            }else{
+                clearInterval(timeInt);
+                console.log('done');
+                w3.style.width = `${0}%`;
+                w3.innerText = `${0}%`;
+                state = false;
+            }
+            },1000);
+            
     }
     function autoclick(){
         clearInterval(interval);
@@ -74,6 +107,14 @@
             coociesObj.score = coociesObj.score - multiplierObj.price;
             multiplierObj.price += parseInt((multiplierObj.price * 70) / 100);
             autoclick();
+            updateDisplay();
+        });
+        boostBtn.addEventListener('click',()=>{
+            boosterObj.level += 1;
+            boosterObj.time += 1;
+            coociesObj.score = coociesObj.score - boosterObj.price;
+            boosterObj.price += parseInt((boosterObj.price * 70) / 100);
+            countSeconds(boosterObj.time);
             updateDisplay();
         });
 })();

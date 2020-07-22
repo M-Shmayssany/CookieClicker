@@ -2,10 +2,12 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    
+    background: -webkit-linear-gradient(90deg, rgb(12, 17, 22), rgb(41, 43, 44));
+    background: linear-gradient(90deg, rgb(12, 17, 22), rgb(41, 43, 44));
+
 }
 body{
-    background-image: url("../assets/img/bg.jpg");
+    
     background-repeat: no-repeat;
     background-size: 100% 100%;
 }

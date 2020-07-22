@@ -5,17 +5,34 @@
           box-sizing: border-box;
   background: -webkit-gradient(linear, left top, right top, from(#0c1116), to(#292b2c));
   background: linear-gradient(90deg, #0c1116, #292b2c);
+  background-image: url("../img/fond.jpg");
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+}
+
+html p {
+  color: white;
 }
 
 body {
-  background-repeat: no-repeat;
-  background-size: 100% 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+body p {
+  color: white;
 }
 
 header p {
   background-color: cornflowerblue;
   color: darkblue;
   text-align: center;
+  color: white;
 }
 
 footer {

@@ -4,18 +4,29 @@
     box-sizing: border-box;
     background: -webkit-linear-gradient(90deg, rgb(12, 17, 22), rgb(41, 43, 44));
     background: linear-gradient(90deg, rgb(12, 17, 22), rgb(41, 43, 44));
-
-}
-body{
-    
+    background-image: url("../img/fond.jpg");
     background-repeat: no-repeat;
     background-size: 100% 100%;
+
+}
+html{
+    p{
+        color:white;
+    }
+}
+body{
+        display:flex;
+        flex-direction: column;
+    p{
+        color:white;
+    }
 }
 header{
     p{
         background-color: cornflowerblue;
         color: darkblue;
         text-align: center;
+        color:white;
     }
 }
 footer{

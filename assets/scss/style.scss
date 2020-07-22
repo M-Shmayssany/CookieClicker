@@ -22,6 +22,17 @@ footer{
     background-color: black;
     color: white;
 }
+.amelioration{
+    display:flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    button{
+        color:white;
+        background-color: grey;
+
+    }
+}
 #fond{
     background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(67,142,59,1) 35%, rgba(0,212,255,1) 100%);
     margin-left: 35rem;

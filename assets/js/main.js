@@ -37,6 +37,8 @@
         autoClickPrix = 50;
         click = 1;
         clickPrix = 10;
+        autoClick2 = 0;
+        autoClick2Prix = 200;
         update();
     }
 

@@ -11,9 +11,20 @@ header{
     }
 }
 footer{
+<<<<<<< HEAD
 
 }
 
+=======
+    background-color: black;
+    color: white;
+}
+.target{
+    display: flex;
+    justify-content: center;
+    text-align: center;
+}
+>>>>>>> mohamed
 .count{
     color: red;
     text-align: center;
@@ -22,6 +33,7 @@ footer{
     margin-left: 20rem;
     margin-right: 20rem;
 }
+<<<<<<< HEAD
 .autoclicker{
     text-align: center;
     border: 1px solid black;
@@ -32,6 +44,32 @@ footer{
 .amelioration{
     display: flex;
     border: 1px solid black;
+=======
+#autoclickerBt{
+    width: 20%;
+    cursor: pointer;
+    background-color: blue;
+    color: white;
+    text-align: center;
+    border: 1px solid black;
+    padding: 1.5rem;
+    margin-left: 34rem;
+    margin-right: 40rem;
+    span{
+        justify-items: right;
+        background-color:red;
+        color:black;
+    }
+}
+
+#boost,#autoclickerBtn,#prixDeAmelioration{
+    width: 100%;
+}
+.amelioration{
+    
+    border: 1px solid black;
+    justify-content: space-between;
+>>>>>>> mohamed
 }
 .boutonAmelioration{
     margin-left: 85rem;

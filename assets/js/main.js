@@ -1,6 +1,7 @@
 (() => {
 
     // your code here
+    let playerNew = document.getElementById('new');
     let run = document.getElementById('img');
     let w3 = document.getElementById('w3');
     let autoClickSpan1 = document.getElementById('span1');
@@ -15,13 +16,30 @@
     let state = false;
     var target = document.getElementById("target");
     var value;
-    var coociesObj = {'count': 0, 'score': 0};
-    var multiplierObj = {'price': 100, 'level': 1};
-    var boosterObj = {'price': 150, 'time':15, 'level': 0};
-    var autoClickerObj = {'price': 150, 'level': 0, 'delay': 1000};
+    
+    
+function setItemslocal(){
+    
+    localStorage.setItem('coocies', JSON.stringify({ 'score': 0}));
+    localStorage.setItem('multiplier', JSON.stringify({'price': 100, 'level': 1}));
+    localStorage.setItem('booster', JSON.stringify({'price': 150, 'time':15, 'level': 0}));
+    localStorage.setItem('autoClicke', JSON.stringify({'price': 150, 'level': 0, 'delay': 1000}));
+    
+    
+}
+    var coociesObj = JSON.parse(localStorage.getItem('coocies'));
+    var multiplierObj = JSON.parse(localStorage.getItem('multiplier'));
+    var boosterObj = JSON.parse(localStorage.getItem('booster'));
+    var autoClickerObj = JSON.parse(localStorage.getItem('autoClicke'));
     var interval;
 
     function click(){ 
+        localStorage.setItem('coocies', JSON.stringify({ 'score': coociesObj.score}));
+        localStorage.setItem('multiplier', JSON.stringify({'price': multiplierObj.price, 'level': multiplierObj.level}));
+        localStorage.setItem('booster', JSON.stringify({'price': boosterObj.price, 'time':boosterObj.time, 'level': boosterObj.level}));
+        localStorage.setItem('autoClicke', JSON.stringify({'price': autoClickerObj.price, 'level': autoClickerObj.level, 'delay': autoClickerObj.delay}));
+        
+    
         if(!state){
             value = 1 * multiplierObj.level;
         }else{
@@ -29,6 +47,7 @@
         }       
         coociesObj.score += value;
         target.innerText = coociesObj.score;
+        
     }
     function updateDisplay(){
         if(coociesObj.score >= autoClickerObj.price){
@@ -46,14 +65,14 @@
         }else{
             boostBtn.disabled = true;
         }        
-
+        
         autoClickSpan1.innerHTML = `Buy ${autoClickerObj.price}`;
         autoClickSpan2.innerHTML = `Level ${autoClickerObj.level+1}`;
         autoClickSpanA1.innerHTML = `Buy ${multiplierObj.price}`;
         autoClickSpanA2.innerHTML = `Level ${multiplierObj.level}`;
         autoClickSpanB1.innerHTML = `Buy ${boosterObj.price}`;
         autoClickSpanB2.innerHTML = `Level ${boosterObj.level+1} Time ${boosterObj.time}`;
-    }
+   }
     function countSeconds(time){
         let i = 0;
         
@@ -118,5 +137,8 @@
             boosterObj.price += parseInt((boosterObj.price * 30) / 100);
             countSeconds(boosterObj.time);
             updateDisplay();
+        });
+        playerNew.addEventListener('click',()=>{
+            setItemslocal();
         });
 })();

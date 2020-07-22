@@ -20,12 +20,16 @@
     //Return score
     let target = document.getElementById("target");
 
-    let value;//display score in cookieObj
+    let value;//display level in cookieObj
     
-    localStorage.setItem('cookies', JSON.stringify({'score':0}));
-    localStorage.setItem('multiplier', JSON.stringify({'price':20, 'level':1}));
-    localStorage.setItem('booster', JSON.stringify({'price':50, 'time':15, 'level':0}));
-    localStorage.setItem('autoClick', JSON.stringify({'price':30, 'level':0, 'delay': 1000}));
+
+
+    function setItemslocal() {
+        localStorage.setItem('cookies', JSON.stringify({'score':0}));
+        localStorage.setItem('multiplier', JSON.stringify({'price':20, 'level':1}));
+        localStorage.setItem('booster', JSON.stringify({'price':50, 'time':15, 'level':0}));
+        localStorage.setItem('autoClick', JSON.stringify({'price':30, 'level':0, 'delay': 1000}));
+    }
 
     let cookieObj = JSON.parse(localStorage.getItem('cookies'));
     let multiplierObj = JSON.parse(localStorage.getItem('multiplier'));
@@ -39,6 +43,24 @@
         target.innerHTML = cookieObj.score;
     }
 
+    function load() {
+        localStorage.setItem('cookies', JSON.stringify({ 'score': cookieObj.score}));
+        localStorage.setItem('multiplier', JSON.stringify({'price': multiplierObj.price, 'level': multiplierObj.level}));
+        localStorage.setItem('booster', JSON.stringify({'price': boosterObj.price, 'time':boosterObj.time, 'level': boosterObj.level}));
+        localStorage.setItem('autoClick', JSON.stringify({'price': autoClickerObj.price, 'level': autoClickerObj.level, 'delay': autoClickerObj.delay}));
+
+        target.innerHTML = JSON.parse(localStorage.getItem('cookies')).score;
+
+        autoClickSpan1.innerHTML = `Buy ${autoClickerObj.price}`;
+        autoClickSpan2.innerHTML = `Level ${autoClickerObj.level+1}`;
+        autoClickSpanA1.innerHTML = `Buy ${multiplierObj.price}`;
+        autoClickSpanA2.innerHTML = `Level ${multiplierObj.level}`;
+        autoClickSpanB1.innerHTML = `Buy ${boosterObj.price}`;
+        autoClickSpanB2.innerHTML = `Level ${boosterObj.level+1} Time ${boosterObj.time}`;
+
+        updateDisplay();
+
+    }
 
     function click(){ 
         if(!timerState){
@@ -48,6 +70,11 @@
         }       
         cookieObj.score += value;
         target.innerText = cookieObj.score;
+
+        localStorage.setItem('cookies', JSON.stringify({ 'score': cookieObj.score}));
+        localStorage.setItem('multiplier', JSON.stringify({'price': multiplierObj.price, 'level': multiplierObj.level}));
+        localStorage.setItem('booster', JSON.stringify({'price': boosterObj.price, 'time':boosterObj.time, 'level': boosterObj.level}));
+        localStorage.setItem('autoClick', JSON.stringify({'price': autoClickerObj.price, 'level': autoClickerObj.level, 'delay': autoClickerObj.delay}));
     }
 
     function updateDisplay(){
@@ -74,7 +101,6 @@
         autoClickSpanB1.innerHTML = `Buy ${boosterObj.price}`;
         autoClickSpanB2.innerHTML = `Level ${boosterObj.level+1} Time ${boosterObj.time}`;
     }
-    //setInterval(updateDisplay, 1000);//refresh update
 
     function countSeconds(time){
         let i = 0;
@@ -114,15 +140,19 @@
     }
 
     //ADD EVENT
+
+    window.addEventListener('load',()=>{
+        load();
+    })
+
         run.addEventListener('click',()=>{  
             click();
-            refreshScore();
+            //refreshScore();
             updateDisplay();
         });
 
         // RESET function
         reset.addEventListener('click', ()=> {
-            if ()
             cookieObj.score=0;
             multiplierObj.price=20;
             multiplierObj.level=1;
@@ -132,14 +162,8 @@
             autoClickerObj.price=30;
             autoClickerObj.level=0;
             autoClickerObj.delay=1000;
-            //boostBtn.disabled = false;
-            //w3.style.width = `${0}%`;
-            //w3.innerText = `${0}%`;
-            //timerState = false;
-            clearInterval(timeInt);
-
-                refreshScore();
-                updateDisplay();
+            refreshScore();
+            updateDisplay();
         });
 
         autoClickBtn.addEventListener('click', ()=>{
@@ -158,7 +182,6 @@
             multiplierObj.level += 1; 
             multiplierObj.price += parseInt((multiplierObj.price * 40) / 100);
             refreshScore();
-            //autoclick();
             updateDisplay();
         });
 

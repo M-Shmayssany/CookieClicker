@@ -41,7 +41,7 @@
         }else{
             prixDeAmeliorationBtn.disabled = true;
         }        
-        if(coociesObj.score >= boosterObj.price){
+        if(coociesObj.score >= boosterObj.price && state == false){
             boostBtn.disabled = false;
         }else{
             boostBtn.disabled = true;
@@ -60,12 +60,14 @@
         
         let timeInt = setInterval(()=>{
                 if ( i <= time) {
+                boostBtn.disabled = true;
                 w3.style.width = `${(100*i)/time}%`;
                 w3.innerText = `${parseInt((100*i)/time)}%`;
                 i++;
                 state = true;
             }else{
                 clearInterval(timeInt);
+                
                 console.log('done');
                 w3.style.width = `${0}%`;
                 w3.innerText = `${0}%`;

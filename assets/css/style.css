@@ -5,6 +5,11 @@
           box-sizing: border-box;
 }
 
+body {
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+}
+
 header p {
   background-color: cornflowerblue;
   color: darkblue;
@@ -14,6 +19,15 @@ header p {
 footer {
   background-color: black;
   color: white;
+}
+
+#fond {
+  background: -webkit-gradient(linear, left top, right top, from(#020024), color-stop(35%, #438e3b), to(#00d4ff));
+  background: linear-gradient(90deg, #020024 0%, #438e3b 35%, #00d4ff 100%);
+  margin-left: 35rem;
+  margin-right: 35rem;
+  padding-left: 1rem;
+  padding-right: 1rem;
 }
 
 #target {
@@ -23,104 +37,143 @@ footer {
 .count {
   color: red;
   text-align: center;
-  margin-top: 2rem;
+  margin-top: 2em;
   border: 1px solid black;
-  margin-left: 20rem;
-  margin-right: 20rem;
+  margin-left: 20em;
+  margin-right: 20em;
 }
 
-.autoclicker {
+#nbrClick {
   text-align: center;
-  border: 1px solid black;
+  color: white;
+  background-color: black;
+  padding: 0.5em;
+  margin-top: 1em;
+  margin-bottom: 1em;
+}
+
+#acheterAutoClickBt {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
   padding: 1.5rem;
-  margin-left: 40rem;
-  margin-right: 40rem;
-}
-
-.amelioration {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  border: 1px solid black;
-}
-
-.boutonAmelioration {
-  margin-left: 85rem;
-  border: 1px solid black;
-}
-
-img {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
   margin-left: auto;
   margin-right: auto;
 }
-<<<<<<< HEAD
-=======
 
-header p {
-  background-color: cornflowerblue;
-  color: darkblue;
-  text-align: center;
+#reset {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  padding: 0.5rem;
+  margin-top: 2rem;
+  margin-left: auto;
+  margin-right: auto;
 }
 
-footer {
+#reset:hover {
+  background-color: red;
+}
+
+#ameliorationClickBt {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  padding: 1.5rem;
+  margin-left: auto;
+  margin-right: auto;
   background-color: black;
   color: white;
 }
 
-.target {
-  display: flex;
-  justify-content: center;
-  text-align: center;
-}
-
-.count {
-  color: red;
-  text-align: center;
-  margin-top: 2rem;
-  border: 1px solid black;
-  margin-left: 20rem;
-  margin-right: 20rem;
-}
-
-#autoclickerBt {
-  width: 20%;
-  cursor: pointer;
+#ameliorationClickBt:hover {
   background-color: blue;
-  color: white;
-  text-align: center;
-  border: 1px solid black;
+}
+
+#acheterAutoClickBt {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
   padding: 1.5rem;
-  margin-left: 34rem;
-  margin-right: 40rem;
+  margin-left: auto;
+  margin-right: auto;
+  background-color: black;
+  color: white;
 }
 
-#autoclickerBt span {
-  justify-items: right;
-  background-color: red;
-  color: black;
+#acheterAutoClickBt:hover {
+  background-color: blue;
 }
 
-#boost, #autoclickerBtn, #prixDeAmelioration {
-  width: 100%;
+#acheterAutoClick2Bt {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  padding: 1.5rem;
+  margin-top: 1rem;
+  margin-left: auto;
+  margin-right: auto;
+  background-color: black;
+  color: white;
 }
 
-.amelioration {
-  border: 1px solid black;
-  justify-content: space-between;
-}
-
-.boutonAmelioration {
-  margin-left: 85rem;
-  border: 1px solid black;
+#acheterAutoClick2Bt:hover {
+  background-color: blue;
 }
 
 img {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
   margin-left: auto;
   margin-right: auto;
 }
+
+img:hover {
+  -webkit-transform: scale(0.8);
+          transform: scale(0.8);
+  -webkit-transition: -webkit-transform 1s;
+  transition: -webkit-transform 1s;
+  transition: transform 1s;
+  transition: transform 1s, -webkit-transform 1s;
+}
+
+#label {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  color: red;
+  background: radial-gradient(circle, #3fdffb 0%, #1bc627 100%);
+  margin-top: 1em;
+  margin-bottom: 1em;
+  border-radius: 5px;
+  border: 2px solid brown;
+}
+
+#cookieParSeconde {
+  text-align: center;
+  color: white;
+  background-color: black;
+  padding: 0.5rem;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+}
 /*# sourceMappingURL=style.css.map */
->>>>>>> mohamed

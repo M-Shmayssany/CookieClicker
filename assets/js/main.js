@@ -1,115 +1,71 @@
 (() => {
 
-<<<<<<< HEAD
-    /*let b = 1;
-    let a = 1 * b;
-    let c = 5;
-    */
-   
     // your code here
-    let compteur = 0;
-    let cookie = document.getElementById('cookie');
-    let target = document.getElementById("target");
-    
-    cookie.addEventListener('click',()=>{
-        compteur += 1;
-        parseInt(localStorage.setItem('score', compteur));
-        target.innerHTML = parseInt(localStorage.getItem('score'));
-    })
-
-
-    let mul2 = document.getElementById('mul2');
-    let mul5 = document.getElementById('mul5');
-    let autoClick = document.getElementById('autoClick');
-    let boost = document.getElementById('boost');
-
-
-    mul2.addEventListener('click',()=>{
-        compteur -= Number(5);
-        parseInt(localStorage.setItem('score', compteur));
-        target.innerHTML = parseInt(localStorage.getItem('score'));
-
-        cookie.addEventListener('click',()=>{
-            compteur += 1;
-            parseInt(localStorage.setItem('score', compteur));
-            target.innerHTML = parseInt(localStorage.getItem('score'));
-        })
-
-    })
-
-
-    mul5.addEventListener('click',()=>{
-        compteur -= Number(10);
-        parseInt(localStorage.setItem('score', compteur));
-        target.innerHTML = parseInt(localStorage.getItem('score'));
-
-        cookie.addEventListener('click',()=>{
-            compteur += 4;
-            parseInt(localStorage.setItem('score', compteur));
-            target.innerHTML = parseInt(localStorage.getItem('score'));
-        })
-
-    })
-    
-
-    /*
-    mul2.addEventListener('click',()=>{
-
-        count = localStorage.getItem('score');
-        count ++;
-        parseInt(localStorage.setItem('score', count));
-        target.innerHTML = parseInt(localStorage.getItem('score'));
-    })
-    */
-
-})();
-=======
-    // your code here
-    let run = document.getElementById('img');
-    let w3 = document.getElementById('w3');
+    let run = document.getElementById('img');//onclick
+    let w3 = document.getElementById('w3');//Progress bar
+    // Return price & level of button
     let autoClickSpan1 = document.getElementById('span1');
     let autoClickSpan2 = document.getElementById('span2');
     let autoClickSpanA1 = document.getElementById('spanA1');
     let autoClickSpanA2 = document.getElementById('spanA2');
     let autoClickSpanB1 = document.getElementById('spanB1');
     let autoClickSpanB2 = document.getElementById('spanB2');
-    let autoClickBtn = document.getElementById('autoclickerBtn');
-    let prixDeAmeliorationBtn = document.getElementById('prixDeAmelioration');
+    //Buttons
+    let autoClickBtn = document.getElementById('autoClicker');
+    let prixDeAmeliorationBtn = document.getElementById('amelio');
     let boostBtn = document.getElementById('boost');
-    let state = false;
-    var target = document.getElementById("target");
-    var value;
-    var coociesObj = {'count': 0, 'score': 0};
-    var multiplierObj = {'price': 100, 'level': 1};
-    var boosterObj = {'price': 150, 'time':15, 'level': 0};
-    var autoClickerObj = {'price': 150, 'level': 0, 'delay': 1000};
-    var interval;
+    let reset = document.getElementById('reset');
+    //Timer
+    let timerState = false;
+    //Return score
+    let target = document.getElementById("target");
+
+    let value;//display score in cookieObj
+    
+    localStorage.setItem('cookies', JSON.stringify({'score':0}));
+    localStorage.setItem('multiplier', JSON.stringify({'price':20, 'level':1}));
+    localStorage.setItem('booster', JSON.stringify({'price':50, 'time':15, 'level':0}));
+    localStorage.setItem('autoClick', JSON.stringify({'price':30, 'level':0, 'delay': 1000}));
+
+    let cookieObj = JSON.parse(localStorage.getItem('cookies'));
+    let multiplierObj = JSON.parse(localStorage.getItem('multiplier'));
+    let boosterObj = JSON.parse(localStorage.getItem('booster'));
+    let autoClickerObj = JSON.parse(localStorage.getItem('autoClick'));
+
+    let interval;//Timerlaps
+
+
+    function refreshScore() {
+        target.innerHTML = cookieObj.score;
+    }
+
 
     function click(){ 
-        if(!state){
+        if(!timerState){
             value = 1 * multiplierObj.level;
         }else{
             value = (1 * multiplierObj.level) * 2;
         }       
-        coociesObj.score += value;
-        target.innerText = coociesObj.score;
+        cookieObj.score += value;
+        target.innerText = cookieObj.score;
     }
+
     function updateDisplay(){
-        if(coociesObj.score >= autoClickerObj.price){
+        if(cookieObj.score >= autoClickerObj.price){
             autoClickBtn.disabled = false;
         }else{
             autoClickBtn.disabled = true;
         }
-        if(coociesObj.score >= multiplierObj.price){
+        if(cookieObj.score >= multiplierObj.price){
             prixDeAmeliorationBtn.disabled = false;
         }else{
             prixDeAmeliorationBtn.disabled = true;
         }        
-        if(coociesObj.score >= boosterObj.price && state == false){
+        if(cookieObj.score >= boosterObj.price && timerState == false){
             boostBtn.disabled = false;
         }else{
             boostBtn.disabled = true;
-        }        
+        }
 
         autoClickSpan1.innerHTML = `Buy ${autoClickerObj.price}`;
         autoClickSpan2.innerHTML = `Level ${autoClickerObj.level+1}`;
@@ -118,9 +74,10 @@
         autoClickSpanB1.innerHTML = `Buy ${boosterObj.price}`;
         autoClickSpanB2.innerHTML = `Level ${boosterObj.level+1} Time ${boosterObj.time}`;
     }
+    //setInterval(updateDisplay, 1000);//refresh update
+
     function countSeconds(time){
         let i = 0;
-        
         
         let timeInt = setInterval(()=>{
                 if ( i <= time) {
@@ -128,18 +85,20 @@
                 w3.style.width = `${(100*i)/time}%`;
                 w3.innerText = `${parseInt((100*i)/time)}%`;
                 i++;
-                state = true;
+                timerState = true;
             }else{
                 clearInterval(timeInt);
                 
                 console.log('done');
                 w3.style.width = `${0}%`;
                 w3.innerText = `${0}%`;
-                state = false;
+                timerState = false;
             }
             },1000);
             
     }
+
+    
     function autoclick(){
         clearInterval(interval);
         interval = setInterval(function(){        
@@ -153,35 +112,64 @@
             }       
         }, autoClickerObj.delay);
     }
+
+    //ADD EVENT
         run.addEventListener('click',()=>{  
             click();
-            updateDisplay()
+            refreshScore();
+            updateDisplay();
         });
-        
+
+        // RESET function
+        reset.addEventListener('click', ()=> {
+            if ()
+            cookieObj.score=0;
+            multiplierObj.price=20;
+            multiplierObj.level=1;
+            boosterObj.price=50;
+            boosterObj.time=15;
+            boosterObj.level=0;
+            autoClickerObj.price=30;
+            autoClickerObj.level=0;
+            autoClickerObj.delay=1000;
+            //boostBtn.disabled = false;
+            //w3.style.width = `${0}%`;
+            //w3.innerText = `${0}%`;
+            //timerState = false;
+            clearInterval(timeInt);
+
+                refreshScore();
+                updateDisplay();
+        });
+
         autoClickBtn.addEventListener('click', ()=>{
             autoClickerObj.level += 1;
             autoClickerObj.delay = autoClickerObj.delay /1.1;
-            coociesObj.score = coociesObj.score - autoClickerObj.price;
-            autoClickerObj.price += parseInt((autoClickerObj.price * 70) / 100);
+            cookieObj.score = cookieObj.score - autoClickerObj.price;
+            autoClickerObj.price += parseInt((autoClickerObj.price * 50) / 100);
             console.log(autoClickerObj.level);
+            refreshScore();
             autoclick();
             updateDisplay();
         });
 
         prixDeAmeliorationBtn.addEventListener('click', ()=>{
+            cookieObj.score = cookieObj.score - multiplierObj.price;
             multiplierObj.level += 1; 
-            coociesObj.score = coociesObj.score - multiplierObj.price;
-            multiplierObj.price += parseInt((multiplierObj.price * 70) / 100);
-            autoclick();
+            multiplierObj.price += parseInt((multiplierObj.price * 40) / 100);
+            refreshScore();
+            //autoclick();
             updateDisplay();
         });
+
         boostBtn.addEventListener('click',()=>{
             boosterObj.level += 1;
             boosterObj.time += 1;
-            coociesObj.score = coociesObj.score - boosterObj.price;
-            boosterObj.price += parseInt((boosterObj.price * 30) / 100);
+            cookieObj.score = cookieObj.score - boosterObj.price;
+            boosterObj.price += parseInt((boosterObj.price * 50) / 100);
             countSeconds(boosterObj.time);
+            refreshScore();
             updateDisplay();
         });
+
 })();
->>>>>>> mohamed

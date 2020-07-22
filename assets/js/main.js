@@ -44,11 +44,14 @@
     }
 
     function load() {
+        if(!localStorage){
+        setItemslocal();
+        }else{
         localStorage.setItem('cookies', JSON.stringify({ 'score': cookieObj.score}));
         localStorage.setItem('multiplier', JSON.stringify({'price': multiplierObj.price, 'level': multiplierObj.level}));
         localStorage.setItem('booster', JSON.stringify({'price': boosterObj.price, 'time':boosterObj.time, 'level': boosterObj.level}));
         localStorage.setItem('autoClick', JSON.stringify({'price': autoClickerObj.price, 'level': autoClickerObj.level, 'delay': autoClickerObj.delay}));
-
+        }
         target.innerHTML = JSON.parse(localStorage.getItem('cookies')).score;
 
         autoClickSpan1.innerHTML = `Buy ${autoClickerObj.price}`;
@@ -58,7 +61,7 @@
         autoClickSpanB1.innerHTML = `Buy ${boosterObj.price}`;
         autoClickSpanB2.innerHTML = `Level ${boosterObj.level+1} Time ${boosterObj.time}`;
 
-        updateDisplay();
+        updateDisplay(); 
 
     }
 

@@ -1,4 +1,8 @@
 (() => {
+    //Check If localStorage
+    
+        
+
 
     // your code here
     let run = document.getElementById('img');//onclick
@@ -23,6 +27,40 @@
     let value;//display level in cookieObj
     
 
+    function load() {
+        if(!localStorage.getItem('cookies')){
+            localStorage.setItem('cookies', JSON.parse({score : 0}))};
+        if(!localStorage.getItem('multiplier')){
+            localStorage.setItem('multiplier', JSON.stringify({'price':20, 'level':1}))};
+        if(!localStorage.getItem('booster')){
+            localStorage.setItem('booster', JSON.stringify({'price':50, 'time':15, 'level':0}))};
+        if(!localStorage.getItem('autoClick')){
+            localStorage.setItem('autoClick', JSON.stringify({'price':30, 'level':0, 'delay': 1000}));
+        }else{
+
+        localStorage.setItem('cookies', JSON.stringify({ 'score': parseInt(cookieObj.score)}));
+        localStorage.setItem('multiplier', JSON.stringify({'price': multiplierObj.price, 'level': multiplierObj.level}));
+        localStorage.setItem('booster', JSON.stringify({'price': boosterObj.price, 'time':boosterObj.time, 'level': boosterObj.level}));
+        localStorage.setItem('autoClick', JSON.stringify({'price': autoClickerObj.price, 'level': autoClickerObj.level, 'delay': autoClickerObj.delay}));
+
+        target.innerHTML = JSON.parse(localStorage.getItem('cookies')).score;
+
+        autoClickSpan1.innerHTML = `Buy ${autoClickerObj.price}`;
+        autoClickSpan2.innerHTML = `Level ${autoClickerObj.level+1}`;
+        autoClickSpanA1.innerHTML = `Buy ${multiplierObj.price}`;
+        autoClickSpanA2.innerHTML = `Level ${multiplierObj.level}`;
+        autoClickSpanB1.innerHTML = `Buy ${boosterObj.price}`;
+        autoClickSpanB2.innerHTML = `Level ${boosterObj.level+1} Time ${boosterObj.time}`;
+
+        updateDisplay();
+
+    }}
+
+
+
+    
+
+
 
     function setItemslocal() {
         localStorage.setItem('cookies', JSON.stringify({'score':0}));
@@ -43,24 +81,7 @@
         target.innerHTML = cookieObj.score;
     }
 
-    function load() {
-        localStorage.setItem('cookies', JSON.stringify({ 'score': cookieObj.score}));
-        localStorage.setItem('multiplier', JSON.stringify({'price': multiplierObj.price, 'level': multiplierObj.level}));
-        localStorage.setItem('booster', JSON.stringify({'price': boosterObj.price, 'time':boosterObj.time, 'level': boosterObj.level}));
-        localStorage.setItem('autoClick', JSON.stringify({'price': autoClickerObj.price, 'level': autoClickerObj.level, 'delay': autoClickerObj.delay}));
-
-        target.innerHTML = JSON.parse(localStorage.getItem('cookies')).score;
-
-        autoClickSpan1.innerHTML = `Buy ${autoClickerObj.price}`;
-        autoClickSpan2.innerHTML = `Level ${autoClickerObj.level+1}`;
-        autoClickSpanA1.innerHTML = `Buy ${multiplierObj.price}`;
-        autoClickSpanA2.innerHTML = `Level ${multiplierObj.level}`;
-        autoClickSpanB1.innerHTML = `Buy ${boosterObj.price}`;
-        autoClickSpanB2.innerHTML = `Level ${boosterObj.level+1} Time ${boosterObj.time}`;
-
-        updateDisplay();
-
-    }
+    
 
     function click(){ 
         if(!timerState){

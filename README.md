@@ -32,7 +32,7 @@ du 20/07/2020 au 22/07/2020
 
 ### Ou en sommes nous dans le projet :
 
-Il reste a finir la mise en page  
+mise en page ok ;) 
 
 ### Qui sommes nous  :
 

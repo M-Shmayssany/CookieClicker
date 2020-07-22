@@ -44,14 +44,19 @@
     }
 
     function load() {
-        if(!localStorage){
+        if(localStorage.getItem('cookies') === null){
+            console.log('new');
         setItemslocal();
+        cookieObj = JSON.parse(localStorage.getItem('cookies'));
+        multiplierObj = JSON.parse(localStorage.getItem('multiplier'));
+        boosterObj = JSON.parse(localStorage.getItem('booster'));
+        autoClickerObj = JSON.parse(localStorage.getItem('autoClick'));    
         }else{
         localStorage.setItem('cookies', JSON.stringify({ 'score': cookieObj.score}));
         localStorage.setItem('multiplier', JSON.stringify({'price': multiplierObj.price, 'level': multiplierObj.level}));
         localStorage.setItem('booster', JSON.stringify({'price': boosterObj.price, 'time':boosterObj.time, 'level': boosterObj.level}));
         localStorage.setItem('autoClick', JSON.stringify({'price': autoClickerObj.price, 'level': autoClickerObj.level, 'delay': autoClickerObj.delay}));
-        }
+        
         target.innerHTML = JSON.parse(localStorage.getItem('cookies')).score;
 
         autoClickSpan1.innerHTML = `Buy ${autoClickerObj.price}`;
@@ -60,7 +65,7 @@
         autoClickSpanA2.innerHTML = `Level ${multiplierObj.level}`;
         autoClickSpanB1.innerHTML = `Buy ${boosterObj.price}`;
         autoClickSpanB2.innerHTML = `Level ${boosterObj.level+1} Time ${boosterObj.time}`;
-
+        }
         updateDisplay(); 
 
     }
@@ -165,6 +170,7 @@
             autoClickerObj.price=30;
             autoClickerObj.level=0;
             autoClickerObj.delay=1000;
+            localStorage.clear();
             refreshScore();
             updateDisplay();
         });

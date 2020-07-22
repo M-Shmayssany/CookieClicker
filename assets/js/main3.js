@@ -22,12 +22,12 @@
     var interval;
 
     function click(){ 
-        if(state){
+        if(!state){
             value = 1 * multiplierObj.level;
         }else{
             value = (1 * multiplierObj.level) * 2;
         }       
-        coociesObj.score += 1 * multiplierObj.level;
+        coociesObj.score += value;
         target.innerText = coociesObj.score;
     }
     function updateDisplay(){
@@ -113,7 +113,7 @@
             boosterObj.level += 1;
             boosterObj.time += 1;
             coociesObj.score = coociesObj.score - boosterObj.price;
-            boosterObj.price += parseInt((boosterObj.price * 70) / 100);
+            boosterObj.price += parseInt((boosterObj.price * 30) / 100);
             countSeconds(boosterObj.time);
             updateDisplay();
         });

@@ -3,6 +3,9 @@
   padding: 0;
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
+}
+
+html {
   background: -webkit-gradient(linear, left top, right top, from(#0c1116), to(#292b2c));
   background: linear-gradient(90deg, #0c1116, #292b2c);
   background-image: url("../img/fond.jpg");
@@ -14,33 +17,27 @@ html p {
   color: white;
 }
 
-body {
+header {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-orient: vertical;
+  -webkit-box-orient: horizontal;
   -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
 }
 
-body p {
-  color: white;
-}
-
-header p {
-  background-color: cornflowerblue;
-  color: darkblue;
-  text-align: center;
+header h1 {
   color: white;
 }
 
 footer {
-  background-color: black;
-  color: white;
-}
-
-.amelioration {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -54,24 +51,83 @@ footer {
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
+  color: white;
+}
+
+footer ul {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  margin-top: 1rem;
+}
+
+footer ul li {
+  margin-left: 1rem;
+  list-style: none;
+}
+
+footer img {
+  position: absolute;
+  bottom: 0px;
+  right: 0px;
+}
+
+img {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+img:active {
+  -webkit-transform: scale(0.8);
+          transform: scale(0.8);
+  -webkit-transition: -webkit-transform .5s;
+  transition: -webkit-transform .5s;
+  transition: transform .5s;
+  transition: transform .5s, -webkit-transform .5s;
+}
+
+.amelioration {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  margin-top: 3rem;
 }
 
 .amelioration button {
+  width: 18vh;
+  height: 10vh;
   color: white;
   background-color: grey;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  margin-top: 2rem;
 }
 
-#fond {
-  background: -webkit-gradient(linear, left top, right top, from(#020024), color-stop(35%, #438e3b), to(#00d4ff));
-  background: linear-gradient(90deg, #020024 0%, #438e3b 35%, #00d4ff 100%);
-  margin-left: 35rem;
-  margin-right: 35rem;
-  padding-left: 1rem;
-  padding-right: 1rem;
-}
-
-#target {
-  text-align: center;
+.amelioration button:hover {
+  border-bottom: 2px solid #00FFFF;
+  -webkit-box-shadow: 3px 2px 3px #1E90FF;
+          box-shadow: 3px 2px 3px #1E90FF;
 }
 
 .count {
@@ -83,28 +139,7 @@ footer {
   margin-right: 20em;
 }
 
-#nbrClick {
-  text-align: center;
-  color: white;
-  background-color: black;
-  padding: 0.5em;
-  margin-top: 1em;
-  margin-bottom: 1em;
-}
-
-#acheterAutoClickBt {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  padding: 1.5rem;
-  margin-left: auto;
-  margin-right: auto;
-}
-
-#reset {
+.reset {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -117,103 +152,40 @@ footer {
   margin-right: auto;
 }
 
-#reset:hover {
+.reset:hover {
   background-color: red;
 }
 
-#ameliorationClickBt {
+.target {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
-  padding: 1.5rem;
-  margin-left: auto;
-  margin-right: auto;
-  background-color: black;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.target p {
   color: white;
 }
 
-#ameliorationClickBt:hover {
-  background-color: blue;
-}
-
-#acheterAutoClickBt {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  padding: 1.5rem;
-  margin-left: auto;
-  margin-right: auto;
-  background-color: black;
+.target span {
   color: white;
 }
 
-#acheterAutoClickBt:hover {
-  background-color: blue;
-}
-
-#acheterAutoClick2Bt {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  padding: 1.5rem;
-  margin-top: 1rem;
-  margin-left: auto;
-  margin-right: auto;
-  background-color: black;
+#target {
   color: white;
 }
 
-#acheterAutoClick2Bt:hover {
-  background-color: blue;
-}
-
-img {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  margin-left: auto;
-  margin-right: auto;
-}
-
-img:hover {
-  -webkit-transform: scale(0.8);
-          transform: scale(0.8);
-  -webkit-transition: -webkit-transform 1s;
-  transition: -webkit-transform 1s;
-  transition: transform 1s;
-  transition: transform 1s, -webkit-transform 1s;
-}
-
-#label {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  color: red;
-  background: radial-gradient(circle, #3fdffb 0%, #1bc627 100%);
-  margin-top: 1em;
-  margin-bottom: 1em;
-  border-radius: 5px;
-  border: 2px solid brown;
-}
-
-#cookieParSeconde {
-  text-align: center;
-  color: white;
-  background-color: black;
-  padding: 0.5rem;
-  margin-top: 1rem;
-  margin-bottom: 1rem;
+.blueBar {
+  width: 80vh;
+  margin: 0 auto;
 }
 /*# sourceMappingURL=style.css.map */

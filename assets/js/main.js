@@ -40,7 +40,7 @@
 
 
     function refreshScore() {
-        target.innerHTML = cookieObj.score;
+        target.innerHTML = " "+cookieObj.score+" ";
     }
 
     function load() {

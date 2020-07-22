@@ -36,7 +36,7 @@ Il reste a finir la mise en page
 
 ### Qui sommes nous  :
 
-1. [Jean-Charles Brognez]()
+1. [Jean-Charles Brognez](https://github.com/jcbrognez)
 2. [mohamed Shmayssany](https://github.com/M-Shmayssany)
 3. [Adrien Delpire](https://github.com/osimers1)
 4. [Robby Delvaux](https://github.com/Delvaux1986) 
